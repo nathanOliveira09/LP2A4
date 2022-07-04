@@ -1,5 +1,3 @@
-<jsp:include page="../../template.jsp"/>
-
 <form method="POST"
 	  action="${pageContext.request.contextPath}/pessoa/cadastrar">
 	
@@ -80,7 +78,7 @@
 	<p>
 		<label for="txtEmail">Email:</label>
 		<input type="text" name="txtEmail">
-	</p>
+	</p>	
 	
 	<p>
 		<label for="txtSenha">Senha:</label>

@@ -36,7 +36,6 @@ public class ListarPessoasServlet extends HttpServlet {
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		Collection<Pessoa> pessoas = pessoaDAO.recuperarPessoas();
 		
-		request.setAttribute("pessoasCadastradas", pessoas);
 		request.setAttribute("tituloPagina", "Cadastro de usuários");
 		request.setAttribute("pathPagina", "../../../webapp/views/pessoa/listar.jsp");
 		

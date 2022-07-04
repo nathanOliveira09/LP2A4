@@ -36,6 +36,38 @@ public class ProdutoDAO extends FabricaConexao{
 		return id;
 	}
 	
+	public List<Produto> recuperarProdutos() {
+		List<Produto> produtos = new ArrayList<Produto>();
+		
+		try {
+			String stmt = "select id, nome, preco, qtd, categoria, descricao from produtos";
+			PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
+			ResultSet rs = pStmt.executeQuery();
+			
+			while(rs.next()) {
+				int i = 0;
+				Produto p = new Produto();
+				p.setId(rs.getInt("id"));
+				p.setNome(rs.getString("nome"));
+				p.setPreco(rs.getDouble("preco"));
+				p.setQtd(rs.getInt("qtd"));
+				p.setCategoria(rs.getString("categoria"));
+				p.setDescricao(rs.getString("descricao"));
+				
+				produtos.add(p);
+				System.out.println(produtos.get(i).getNome());
+				i++;
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Erro ao retornar os produtos." + e.getMessage());
+		}finally {
+			super.fecharConexao();
+		}
+		
+		return produtos;
+	}
+	
 	public Produto recuperarProdutoPorId(int id) {
 		Produto resultado = null;
 		

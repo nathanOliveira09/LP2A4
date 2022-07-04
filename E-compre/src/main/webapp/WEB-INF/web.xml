@@ -14,4 +14,28 @@
     <url-pattern>/produto/novo</url-pattern>
     <url-pattern>/produto/adicionar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListarProdutosServlet</display-name>
+    <servlet-name>ListarProdutosServlet</servlet-name>
+    <servlet-class>controller.produto.ListarProdutosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListarProdutosServlet</servlet-name>
+    <url-pattern>/produto/listar</url-pattern>
+    <url-pattern>/produto/consultar</url-pattern>
+    <url-pattern>/produto/visualizar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditarProdutoServlet</display-name>
+    <servlet-name>EditarProdutoServlet</servlet-name>
+    <servlet-class>controller.produto.EditarProdutoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditarProdutoServlet</servlet-name>
+    <url-pattern>/produto/editar</url-pattern>
+    <url-pattern>/produto/alterar</url-pattern>
+    <url-pattern>/produto/atualizar</url-pattern>
+  </servlet-mapping>
 </web-app>

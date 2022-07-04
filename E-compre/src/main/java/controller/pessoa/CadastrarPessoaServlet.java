@@ -10,6 +10,7 @@ import model.Pessoa;
 import model.repositorio.PessoaDAO;
 
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  * Servlet implementation class CadastrarPessoaServlet
@@ -31,7 +32,10 @@ public class CadastrarPessoaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setAttribute("tituloPagina", "Cadastrar Pessoa");
+		request.setAttribute("pathPagina", "/pessoa/cadastrar.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("../../../webapp/template.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -55,11 +59,13 @@ public class CadastrarPessoaServlet extends HttpServlet {
 		
 		
 		pessoaDAO.criarPessoa(p);
+
+		Collection<Pessoa> pessoas = pessoaDAO.recuperarPessoas();
 		
-		
+		request.setAttribute("pessoasCadastradas", pessoas);
 		request.setAttribute("tituloPagina", "Cadastrar Pessoa");
-		request.setAttribute("pathPagina", "/pessoa/cadastrar.jsp");
-		request.setAttribute("pessoa", p);
+		request.setAttribute("pathPagina", "/pessoa/listar.jsp");
+	
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		rd.forward(request, response);

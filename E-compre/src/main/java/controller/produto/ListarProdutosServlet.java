@@ -1,4 +1,4 @@
-package controller.pessoa;
+ package controller.produto;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -7,23 +7,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Pessoa;
+import model.Produto;
 import model.repositorio.PessoaDAO;
+import model.repositorio.ProdutoDAO;
 
 import java.io.IOException;
 import java.util.Collection;
 
 /**
- * Servlet implementation class ExcluirPessoaServlet
+ * Servlet implementation class ListarProdutosServlet
  */
-
-@WebServlet({"/pessoa/excluir","/admin/excluir","/user/excluir"})
-public class ExcluirPessoaServlet extends HttpServlet {
+public class ListarProdutosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ExcluirPessoaServlet() {
+    public ListarProdutosServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,8 +32,16 @@ public class ExcluirPessoaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+		Collection<Produto> produtos = produtoDAO.recuperarProdutos();
+		
+		request.setAttribute("produtosCadastrados", produtos);
+		request.setAttribute("tituloPagina", "Cadastro de produtos");
+		request.setAttribute("pathPagina", "../../../webapp/views/produto/listar.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("../../../webapp/template.jsp");
+		
+		rd.forward(request, response);
 	}
 
 	/**
@@ -41,31 +49,7 @@ public class ExcluirPessoaServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int idPessoa=0;
-		String idInformado = request.getParameter("idpessoa");
-		
-		if (idInformado != null) {
-			try {
-				idPessoa = Integer.parseInt(idInformado);
-			} catch (Exception e) {
-				System.out.println("O ID informado é inválido.");
-			}
-		}
-		
-		PessoaDAO pessoa = new PessoaDAO();
-		
-		pessoa.removerPessoa(idPessoa);
-		Collection<Pessoa> pessoas = pessoa.recuperarPessoas();
-		
-		request.setAttribute("pessoasCadastradas", pessoas);
-		request.setAttribute("tituloPagina", "Editar Pessoa");
-		request.setAttribute("pathPagina", "/pessoa/listar.jsp");
-	
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
-		rd.forward(request, response);
-		
-		
+		doGet(request, response);
 	}
 
 }

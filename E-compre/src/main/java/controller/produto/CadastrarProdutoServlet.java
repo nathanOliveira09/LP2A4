@@ -1,6 +1,8 @@
 package controller.produto;
 
 import java.io.IOException;
+import java.util.Collection;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -55,7 +57,9 @@ public class CadastrarProdutoServlet extends HttpServlet {
 		
 		produtoDAO.criarProduto(p);
 		
+		Collection<Produto> produtos = produtoDAO.recuperarProdutos();
 		
+		request.setAttribute("produtosCadastrados", produtos);
 		request.setAttribute("tituloPagina", "Cadastrar Produto");
 		request.setAttribute("pathPagina", "/produto/listar.jsp");
 		

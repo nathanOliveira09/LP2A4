@@ -6,8 +6,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Pessoa {
@@ -17,7 +15,6 @@ public class Pessoa {
 	private String nome;
 	private String cpf;
 	private String sexo;
-	@Temporal(TemporalType.DATE)
 	private Date dataNasc;
 	private String telefone;
 	private String rua;

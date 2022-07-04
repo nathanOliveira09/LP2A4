@@ -70,11 +70,13 @@ if(request.getAttribute("pathView") != null)
 	</header>
     
 	<div class="container">
+		<h1><%=tituloPagina%></h1>
 		<main>
-			<h1><%=tituloPagina%></h1>
-			<jsp:include page="${pathView}"></jsp:include>
+			<% String pathPagina = (String) request.getAttribute("pathpagina"); %>
+			<jsp:include page="${pathPagina}"/>
 		</main>
 	</div>
+	
 
 
     <script src="./js/bootstrap.bundle.min.js"></script>
