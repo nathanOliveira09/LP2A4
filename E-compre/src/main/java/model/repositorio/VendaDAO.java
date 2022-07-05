@@ -4,26 +4,31 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
+import model.Pessoa;
 import model.Produto;
 import model.Venda;
 
 public class VendaDAO extends FabricaConexao{
 
 	private PessoaDAO pessoa = new PessoaDAO();
-	private ProdutoDAO produto = new ProdutoDAO();
+	private ProdutoDAO produtos = new ProdutoDAO();
+	private Produto produto = new Produto();
 	
-	public int registrarVenda(Venda venda, int qtdProduto) {
+	public int registrarVenda(Venda venda) {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
 		int id = 0;
 		
 		try {
-			String stmt = "insert into vendas (idPessoa, valorTotal, dataVenda)";
+			String stmt = "insert into vendas (idPessoa, valorTotal, dataVenda, quantidadeproduto)";
 			PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
-			pStmt.setInt(1, venda.getPessoa().getId());
+			pStmt.setInt(1, venda.getId());
 			pStmt.setDouble(2, venda.getValorTotal());
 			String data = dateFormat.format(venda.getDataVenda());
 			pStmt.setString(3, data);
+			pStmt.setInt(4, venda.getQuantidade());
 			
 			ResultSet rs = pStmt.executeQuery();
 			
@@ -31,14 +36,9 @@ public class VendaDAO extends FabricaConexao{
 				id = rs.getInt(1);
 			}
 			
-			for(Produto produto: venda.getProdutos()) {
-				stmt="insert into venda_produtos (idVenda, idProduto, nomeProduto, qtdProduto, valorProduto";
+				stmt="insert into venda_produtos (idVenda, idProduto)";
 				pStmt.setInt(1, venda.getId());
 				pStmt.setInt(2, produto.getId());
-				pStmt.setString(3, produto.getNome());
-				pStmt.setInt(4, qtdProduto);
-				pStmt.setDouble(5, produto.getPreco());
-			}
 			
 			super.fecharConexao();
 			
@@ -48,6 +48,7 @@ public class VendaDAO extends FabricaConexao{
 		
 		return id;
 	}
+	
 	
 //	public Venda consultarVendaPorId(int id) {
 //		Venda resultado = null;

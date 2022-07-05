@@ -2,13 +2,10 @@
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Pessoa;
 import model.Produto;
-import model.repositorio.PessoaDAO;
 import model.repositorio.ProdutoDAO;
 
 import java.io.IOException;

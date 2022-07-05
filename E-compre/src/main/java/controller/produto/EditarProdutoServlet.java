@@ -50,7 +50,7 @@ public class EditarProdutoServlet extends HttpServlet {
 		
 		request.setAttribute("tituloPagina", "Editar Produto");
 		request.setAttribute("pathPagina", "/produto/editar.jsp");
-		request.setAttribute("produto", p);
+		request.setAttribute("produtos", p);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		rd.forward(request, response); 

@@ -26,8 +26,12 @@ CREATE TABLE produtos(
 );
 
 
-CREATE TABLE vendas(idPessoa integer NOT NULL, valorTotal double precision NOT NULL, dataVenda VARCHAR(10));
+CREATE TABLE vendas(idVenda SERIAL, idPessoa integer NOT NULL, quantidadeProduto integer NOT NULL, valorTotal double precision NOT NULL, dataVenda VARCHAR(10),constraint pk_vendas primary key(idVenda), constraint fk_pessoa FOREIGN KEY (idPessoa) REFERENCES pessoas(id));
+
+CREATE TABLE vendas_produtos(idvenda integer REFERENCES vendas, id integer REFERENCES produtos, PRIMARY KEY (idvenda, id); 
 
 CREATE TABLE compras(idCompra SERIAL, idProduto integer NOT NULL, numeroNF bigint NOT NULL, quantidade integer NOT NULL, primary key(idCompra), constraint fk_produtos FOREIGN KEY(idProduto) REFERENCES produtos(id));
 
 SELECT * FROM vendas INNER JOIN pessoas ON pessoas.id = idPessoa;
+
+SELECT * FROM compras INNER JOIN produtos ON produtos.id = idproduto AND produtos.id=3;

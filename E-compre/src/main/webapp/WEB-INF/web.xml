@@ -38,4 +38,40 @@
     <url-pattern>/produto/alterar</url-pattern>
     <url-pattern>/produto/atualizar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegistrarVendaServlet</display-name>
+    <servlet-name>RegistrarVendaServlet</servlet-name>
+    <servlet-class>controller.venda.RegistrarVendaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrarVendaServlet</servlet-name>
+    <url-pattern>/venda/registrar</url-pattern>
+    <url-pattern>/venda/cadastrar</url-pattern>
+    <url-pattern>/venda/new</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RegistrarCompraServlet</display-name>
+    <servlet-name>RegistrarCompraServlet</servlet-name>
+    <servlet-class>controller.compra.RegistrarCompraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrarCompraServlet</servlet-name>
+    <url-pattern>/compra/new</url-pattern>
+    <url-pattern>/compra/registrar</url-pattern>
+    <url-pattern>/compra/adicionar</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListarComprasServlet</display-name>
+    <servlet-name>ListarComprasServlet</servlet-name>
+    <servlet-class>controller.compra.ListarComprasServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListarComprasServlet</servlet-name>
+    <url-pattern>/compras/listar</url-pattern>
+    <url-pattern>/compras/ver</url-pattern>
+    <url-pattern>/compras/view</url-pattern>
+  </servlet-mapping>
 </web-app>
