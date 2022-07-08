@@ -1,23 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../../template.jsp"/>
 
 <form method="POST"
 	  action="${pageContext.request.contextPath}/produto/cadastrar">
 	
 	<p>
-		<label for="txtNome">Nome:</label>
-		<input type="text" name="txtNome">
+		<label for="nome">Nome:</label>
+		<input type="text" name="nome">
 	</p>
 	
 	<p>
-		<label for="txtDescricao">Descrição:</label>
-		<input type="text" name="txtDescricao">
+		<label for="descricao">Descrição:</label>
+		<input type="text" name="descricao">
 	</p>
 	
 	<p>
-		<label for="txtCategoria">Categoria:</label>
-		<input type="text" name="txtCategoria">
+		<label for="categoria">Categoria:</label>
+		<input type="text" name="categoria">
 	</p>
 	 
 	
@@ -27,8 +26,8 @@
 	</p>
 	
 	<p>
-		<label for="txtQuantidade">Quantidade:</label>
-		<input type="text" name="txtQuantidade">
+		<label for="qtd">Quantidade:</label>
+		<input type="number" name="qtd">
 	</p>
 
 	<p>

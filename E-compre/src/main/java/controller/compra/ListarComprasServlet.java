@@ -1,5 +1,8 @@
-package controller.pessoa;
-import model.repositorio.*;
+package controller.compra;
+
+import java.io.IOException;
+import java.util.Collection;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,25 +10,26 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Pessoa;
+import model.Produto;
 import model.repositorio.PessoaDAO;
+import model.repositorio.ProdutoDAO;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+
+import model.Compra;
+import model.repositorio.CompraDAO;
 
 /**
- * Servlet implementation class ListarPessoasServlet
+ * Servlet implementation class ListarComprasServlet
  */
-@WebServlet({"/pessoa/listar","/pessoa/visualizar","/admin/visualizar","/user/view"})
-public class ListarPessoasServlet extends HttpServlet {
+public class ListarComprasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @see HttpServlet#HttpServlet()
+     * Default constructor. 
      */
-    public ListarPessoasServlet() {
-        super();
+    public ListarComprasServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -33,13 +37,12 @@ public class ListarPessoasServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PessoaDAO pessoaDAO = new PessoaDAO();
-		Collection<Pessoa> pessoas = pessoaDAO.recuperarPessoas();
+		CompraDAO compraDAO = new CompraDAO();
+		Collection<Compra> compras = compraDAO.recuperarComprasEProdutos();
 		
-		request.setAttribute("tituloPagina", "Cadastro de usuários");
-//		request.setAttribute("pathPagina", "../../../webapp/views/pessoa/listar.jsp");
-		request.setAttribute("pathPagina", "/views/pessoa/listar.jsp");
-		request.setAttribute("pessoasCadastradas", pessoas);
+		request.setAttribute("comprasRegistradas", compras);
+		request.setAttribute("tituloPagina", "Registro de compras");
+		request.setAttribute("pathPagina", "/views/compra/listarCompras.jsp");
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		

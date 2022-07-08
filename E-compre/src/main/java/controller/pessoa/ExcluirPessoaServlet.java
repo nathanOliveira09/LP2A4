@@ -33,7 +33,28 @@ public class ExcluirPessoaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int idPessoa=0;
+		Pessoa p = null;
+		String idInformado = request.getParameter("idpessoa");
+		
+		if (idInformado != null) {
+			try {
+				idPessoa = Integer.parseInt(idInformado);
+			} catch (Exception e) {
+				System.out.println("O ID informado é inválido.");
+			}
+		}
+		
+		PessoaDAO pessoa = new PessoaDAO();
+		
+		p = pessoa.recuperarPessoa(idPessoa);
+		
+		request.setAttribute("tituloPagina", "Excluir Pessoa");
+		request.setAttribute("pathPagina", "/views/pessoa/excluir.jsp");
+		request.setAttribute("pessoa", p);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
+		rd.forward(request, response);  
 	}
 
 	/**
@@ -58,8 +79,8 @@ public class ExcluirPessoaServlet extends HttpServlet {
 		Collection<Pessoa> pessoas = pessoa.recuperarPessoas();
 		
 		request.setAttribute("pessoasCadastradas", pessoas);
-		request.setAttribute("tituloPagina", "Editar Pessoa");
-		request.setAttribute("pathPagina", "/pessoa/listar.jsp");
+		request.setAttribute("tituloPagina", "Excluir Pessoa");
+		request.setAttribute("pathPagina", "/views/pessoa/listar.jsp");
 	
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");

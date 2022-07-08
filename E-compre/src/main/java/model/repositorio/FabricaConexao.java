@@ -17,7 +17,7 @@ public class FabricaConexao {
 				
 				Properties props = new Properties();
 				props.setProperty("user", "postgres");
-				props.setProperty("password", "root");
+				props.setProperty("password", "postgres");
 				props.setProperty("ssl", "false");
 				
 				this.conn =  DriverManager.getConnection(url, props);

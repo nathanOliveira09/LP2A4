@@ -12,7 +12,9 @@
 Pessoa p = (Pessoa) request.getAttribute("pessoa");
 %>
 <form method="POST"
-	  action="${pageContext.request.contextPath}/pessoa/cadastrar">
+	  action="${pageContext.request.contextPath}/pessoa/editar">
+	
+	<input name="idpessoa" type="hidden" value="<%=p.getId()%>">
 	
 	<p>
 		<label for="txtNome">Nome:</label>

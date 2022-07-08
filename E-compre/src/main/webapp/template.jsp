@@ -6,8 +6,8 @@ String tituloPagina = "Index";
 String pathView = "/index";
 if(request.getAttribute("tituloPagina") != null)
 	tituloPagina = (String) request.getAttribute("tituloPagina");
-if(request.getAttribute("pathView") != null)
-	pathView = (String) request.getAttribute("pathView");
+if(request.getAttribute("pathPagina") != null)
+	pathView = (String) request.getAttribute("pathPagina");
 %>
 
 
@@ -59,7 +59,7 @@ if(request.getAttribute("pathView") != null)
 		            <ul class="dropdown-menu" aria-labelledby="dropdown05">
 		              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/pessoa/listar">Ver pessoas</a></li>
 		              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/produto/listar">Ver produtos</a></li>
-		              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/compra/listar">Ver compras</a></li>
+		              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/compras/listar">Ver compras</a></li>
 		            </ul>
 		          </li>
 		        </ul>

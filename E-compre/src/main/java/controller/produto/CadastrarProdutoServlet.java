@@ -34,7 +34,10 @@ public class CadastrarProdutoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setAttribute("tituloPagina", "Cadastrar Produto");
+		request.setAttribute("pathPagina", "/views/produto/cadastrarProduto.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -45,12 +48,13 @@ public class CadastrarProdutoServlet extends HttpServlet {
 		Produto p = new Produto();
 		ProdutoDAO produtoDAO = new ProdutoDAO();
 		
-		String precoInformado = request.getParameter("preco");
-		String quantidadeInformada = request.getParameter("qtd");
+		String precoInformado = request.getParameter("txtPreco");
+//		String quantidadeInformada = request.getParameter("qtd");
 		
 		p.setNome(request.getParameter("nome"));
 		p.setPreco(Double.parseDouble(precoInformado));
-		p.setQtd(Integer.parseInt(quantidadeInformada));
+//		p.setQtd(Integer.parseInt(quantidadeInformada));
+		p.setQtd(Integer.parseInt(request.getParameter("qtd")));
 		p.setCategoria(request.getParameter("categoria"));
 		p.setDescricao(request.getParameter("descricao"));
 		
@@ -61,7 +65,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
 		
 		request.setAttribute("produtosCadastrados", produtos);
 		request.setAttribute("tituloPagina", "Cadastrar Produto");
-		request.setAttribute("pathPagina", "/produto/listar.jsp");
+		request.setAttribute("pathPagina", "/views/produto/listarProduto.jsp");
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		rd.forward(request, response);

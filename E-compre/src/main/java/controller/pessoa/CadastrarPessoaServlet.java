@@ -33,8 +33,8 @@ public class CadastrarPessoaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setAttribute("tituloPagina", "Cadastrar Pessoa");
-		request.setAttribute("pathPagina", "/pessoa/cadastrar.jsp");
-		RequestDispatcher rd = request.getRequestDispatcher("../../../webapp/template.jsp");
+		request.setAttribute("pathPagina", "/views/pessoa/cadastrar.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		rd.forward(request, response);
 	}
 
@@ -48,14 +48,15 @@ public class CadastrarPessoaServlet extends HttpServlet {
 		
 		p.setNome(request.getParameter("txtNome"));
 		p.setCpf(request.getParameter("numCpf"));
-		p.setCpf(request.getParameter("sexo"));
-		p.setCpf(request.getParameter("txtTelefone"));
-		p.setCpf(request.getParameter("txtRua"));
-		p.setCpf(request.getParameter("txtBairro"));
-		p.setCpf(request.getParameter("txtCidade"));
-		p.setCpf(request.getParameter("UF"));
-		p.setCpf(request.getParameter("txtEmail"));
-		p.setCpf(request.getParameter("txtSenha"));
+		p.setSexo(request.getParameter("sexo"));
+		p.setTelefone(request.getParameter("txtTelefone"));
+		p.setRua(request.getParameter("txtRua"));
+		p.setBairro(request.getParameter("txtBairro"));
+		p.setCidade(request.getParameter("txtCidade"));
+		p.setEstado(request.getParameter("UF"));
+		p.setEmail(request.getParameter("txtEmail"));
+		p.setSenha(request.getParameter("txtSenha"));
+		p.setRole("admin");
 		
 		
 		pessoaDAO.criarPessoa(p);
@@ -64,7 +65,7 @@ public class CadastrarPessoaServlet extends HttpServlet {
 		
 		request.setAttribute("pessoasCadastradas", pessoas);
 		request.setAttribute("tituloPagina", "Cadastrar Pessoa");
-		request.setAttribute("pathPagina", "/pessoa/listar.jsp");
+		request.setAttribute("pathPagina", "/views/pessoa/listar.jsp");
 	
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");

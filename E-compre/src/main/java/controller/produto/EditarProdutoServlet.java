@@ -12,6 +12,7 @@ import model.repositorio.PessoaDAO;
 import model.repositorio.ProdutoDAO;
 
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  * Servlet implementation class EditarProdutoServlet
@@ -49,7 +50,7 @@ public class EditarProdutoServlet extends HttpServlet {
 		p = produto.recuperarProdutoPorId(idProduto);
 		
 		request.setAttribute("tituloPagina", "Editar Produto");
-		request.setAttribute("pathPagina", "/produto/editar.jsp");
+		request.setAttribute("pathPagina", "/views/produto/editarProduto.jsp");
 		request.setAttribute("produto", p);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
@@ -60,8 +61,34 @@ public class EditarProdutoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Produto p = new Produto();
+		ProdutoDAO produtoDAO = new ProdutoDAO();
+		
+		double precoInformado = Double.parseDouble(request.getParameter("txtPreco"));
+		int quantidadeInformada = Integer.parseInt(request.getParameter("txtQuantidade"));
+		
+		p.setNome(request.getParameter("txtNome"));
+		p.setDescricao(request.getParameter("txtDescricao"));
+		p.setCategoria(request.getParameter("txtCategoria"));
+		p.setPreco(precoInformado);
+		p.setQtd(quantidadeInformada);
+		
+		produtoDAO.editarProduto(p);
+		
+		Collection<Produto> produtos = produtoDAO.recuperarProdutos();
+		
+		request.setAttribute("produtosCadastrados", produtos);
+		request.setAttribute("tituloPagina", "Produtos cadastrados");
+		request.setAttribute("pathPagina", "/views/produto/listarProduto.jsp");
+	
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
+		rd.forward(request, response);
+		
+		
+		
+		
+		
 	}
 
 }

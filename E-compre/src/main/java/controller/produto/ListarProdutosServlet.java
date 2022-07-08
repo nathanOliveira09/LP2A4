@@ -2,13 +2,10 @@
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Pessoa;
 import model.Produto;
-import model.repositorio.PessoaDAO;
 import model.repositorio.ProdutoDAO;
 
 import java.io.IOException;
@@ -37,9 +34,10 @@ public class ListarProdutosServlet extends HttpServlet {
 		
 		request.setAttribute("produtosCadastrados", produtos);
 		request.setAttribute("tituloPagina", "Cadastro de produtos");
-		request.setAttribute("pathPagina", "../../../webapp/views/produto/listar.jsp");
+		request.setAttribute("pathPagina", "/views/produto/listarProduto.jsp");
+		request.setAttribute("produtosCadastrados", produtos);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("../../../webapp/template.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		
 		rd.forward(request, response);
 	}

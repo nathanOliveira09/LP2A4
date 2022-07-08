@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="model.Produto" %>
-<jsp:include page="../../template.jsp"/>
 
 <%
 Produto p = (Produto) request.getAttribute("produto");
 %>
 <form method="POST"
-	  action="${pageContext.request.contextPath}/produto/cadastrar">
+	  action="${pageContext.request.contextPath}/produto/editar">
 	
 	<p>
 		<label for="txtNome">Nome:</label>
