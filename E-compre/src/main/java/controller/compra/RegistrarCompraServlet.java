@@ -34,14 +34,11 @@ public class RegistrarCompraServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
 		request.setAttribute("tituloPagina", "Registrar compra");
 		request.setAttribute("pathPagina", "/views/compra/registrarCompra.jsp");
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		rd.forward(request, response);
-=======
 		response.getWriter().append("Served at: ").append(request.getContextPath());
->>>>>>> a944c0512718310266e59e6831ed26a1fcc80aca
 	}
 
 	/**

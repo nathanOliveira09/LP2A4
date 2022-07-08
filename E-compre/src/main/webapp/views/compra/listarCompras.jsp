@@ -17,12 +17,9 @@ if(request.getAttribute("comprasRegistradas") != null)
 	<div class="row">
 		<div class="col-xl-12 d-flex flex-row">
 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/produto/cadastrar" role="button">
-<<<<<<< HEAD
 			Registrar novo produto
 			</a>
 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/compra/registrar" role="button">
-=======
->>>>>>> a944c0512718310266e59e6831ed26a1fcc80aca
 			Registrar nova compra
 			</a>
 		</div>
@@ -59,7 +56,7 @@ if(request.getAttribute("comprasRegistradas") != null)
 						out.println("<a role=\"button\" class=\"btn btn-secondary\" ");
 						out.println("href=\"");
 						out.println(request.getContextPath());
-						out.println("/produto/editar?idcompra=");
+						out.println("/compra/editar?idcompra=");
 						out.println(c.getId());
 						out.println("\"> Editar compra </a>");
 						out.println("</td>");
@@ -68,7 +65,7 @@ if(request.getAttribute("comprasRegistradas") != null)
 						out.println("<a role=\"button\" class=\"btn btn-secondary\" ");
 						out.println("href=\"");
 						out.println(request.getContextPath());
-						out.println("/produto/excluir?idcompra=");
+						out.println("/compra/excluir?idcompra=");
 						out.println(c.getId());
 						out.println("\"> Excluir compra </a>");
 						out.println("</td>");

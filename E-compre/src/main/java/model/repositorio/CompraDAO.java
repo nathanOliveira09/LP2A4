@@ -59,7 +59,7 @@ public class CompraDAO extends FabricaConexao{
 		List<Compra> compras = new ArrayList<Compra>();
 		
 		try {
-			String  stmt = "SELECT * FROM compras INNER JOIN produtos ON produtos.id = idcompra";
+			String  stmt = "SELECT * FROM compras INNER JOIN produtos ON produtos.id = compras.idproduto";
 			PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
 			
 			ResultSet rs = pStmt.executeQuery();
@@ -71,6 +71,7 @@ public class CompraDAO extends FabricaConexao{
 				c.setId(rs.getInt("idcompra"));
 				c.setNumeroNF(rs.getLong("numeronf"));
 				c.setProdutos(p1);
+				c.setQuantidade(rs.getInt("quantidade"));
 				
 				compras.add(c);
 			}

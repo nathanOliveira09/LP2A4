@@ -38,7 +38,8 @@ if(request.getAttribute("produtosCadastrados") != null)
 					<th class="th-sm"></th>
 				</tr>
 			</thead>
-			<tbody>
+			<
+			tbody>
 				<%
 					
 					for(Produto p : produtos)

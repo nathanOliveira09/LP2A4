@@ -15,21 +15,21 @@ Pessoa p = (Pessoa) request.getAttribute("pessoa");
 	  action="${pageContext.request.contextPath}/pessoa/excluir">
 	
 	
-	<input name="idpessoa" type="hidden" value="<%=p.getId()%>">
+	<input name="idpessoa" type="hidden" value="<%=p.getId()%>" readonly>
 	
 	<p>
 		<label for="txtNome">Nome:</label>
-		<input type="text" name="txtNome" value="<%=p.getNome()%>">
+		<input type="text" name="txtNome" value="<%=p.getNome()%>" readonly>
 	</p>
 	
 	<p>
 		<label for="numCpf">CPF:</label>
-		<input type="text" name="numCpf" value="<%=p.getCpf()%>">
+		<input type="text" name="numCpf" value="<%=p.getCpf()%>" readonly>
 	</p>
 	
 	<label for="sexo">Sexo</label>
 
-	<select name="sexo" id="sexo" value="<%=p.getSexo()%>">
+	<select name="sexo" id="sexo" value="<%=p.getSexo()%>" readonly>
 	  <option value="Masculino">Masculino</option>
 	  <option value="Feminino">Feminino</option>
 	  <option value="Diadico">Diádico</option>
@@ -39,27 +39,27 @@ Pessoa p = (Pessoa) request.getAttribute("pessoa");
 	
 	<p>
 		<label for="txtTelefone">Telefone:</label>
-		<input type="text" name="txtTelefone" value="<%=p.getTelefone()%>">
+		<input type="text" name="txtTelefone" value="<%=p.getTelefone()%>" readonly>
 	</p>
 	
 	<p>
 		<label for="txtRua">Rua:</label>
-		<input type="text" name="txtRua" value="<%=p.getRua()%>">
+		<input type="text" name="txtRua" value="<%=p.getRua()%>" readonly>
 	</p>
 	
 	<p>
 		<label for="txtBairro">Bairro:</label>
-		<input type="text" name="txtBairro" value="<%=p.getBairro()%>">
+		<input type="text" name="txtBairro" value="<%=p.getBairro()%>" readonly>
 	</p>
 	
 	<p>
 		<label for="txtCidade">Cidade:</label>
-		<input type="text" name="txtCidade" value="<%=p.getCidade()%>">
+		<input type="text" name="txtCidade" value="<%=p.getCidade()%>" readonly>
 	</p>
 	
 	
 	<label for="UF">Estado:</label>
-	<select id="UF" name="UF" value="<%=p.getEstado()%>">
+	<select id="UF" name="UF" value="<%=p.getEstado()%>" readonly>
 	    <option value="">Selecione</option>
 	    <option value="AC">AC</option>
 	    <option value="AL">AL</option>
@@ -93,12 +93,12 @@ Pessoa p = (Pessoa) request.getAttribute("pessoa");
 	
 	<p>
 		<label for="txtEmail">Email:</label>
-		<input type="text" name="txtEmail" value="<%=p.getEmail()%>">
+		<input type="text" name="txtEmail" value="<%=p.getEmail()%>" readonly>
 	</p>
 	
 	<p>
 		<label for="txtSenha">Senha:</label>
-		<input type="text" name="txtSenha" value="<%=p.getSenha()%>">
+		<input type="text" name="txtSenha" value="<%=p.getSenha()%>" readonly>
 	</p>
 	
 	<p>

@@ -6,24 +6,22 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Pessoa;
 import model.Produto;
-import model.repositorio.PessoaDAO;
 import model.repositorio.ProdutoDAO;
 
 import java.io.IOException;
 import java.util.Collection;
 
 /**
- * Servlet implementation class EditarProdutoServlet
+ * Servlet implementation class ExcluirProdutoServlet
  */
-public class EditarProdutoServlet extends HttpServlet {
+public class ExcluirProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EditarProdutoServlet() {
+    public ExcluirProdutoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,7 +48,7 @@ public class EditarProdutoServlet extends HttpServlet {
 		p = produto.recuperarProdutoPorId(idProduto);
 		
 		request.setAttribute("tituloPagina", "Editar Produto");
-		request.setAttribute("pathPagina", "/views/produto/editarProduto.jsp");
+		request.setAttribute("pathPagina", "/views/produto/excluirProduto.jsp");
 		request.setAttribute("produto", p);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
@@ -72,9 +70,10 @@ public class EditarProdutoServlet extends HttpServlet {
 		p.setCategoria(request.getParameter("txtCategoria"));
 		p.setPreco(precoInformado);
 		p.setQtd(quantidadeInformada);
+		System.out.println(request.getParameter("idproduto"));
 		p.setId(Integer.parseInt(request.getParameter("idproduto")));
 		
-		produtoDAO.editarProduto(p);
+		produtoDAO.removerProduto(p.getId());
 		
 		Collection<Produto> produtos = produtoDAO.recuperarProdutos();
 		
@@ -85,11 +84,6 @@ public class EditarProdutoServlet extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		rd.forward(request, response);
-		
-		
-		
-		
-		
 	}
 
 }

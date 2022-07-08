@@ -74,4 +74,16 @@
     <url-pattern>/compras/ver</url-pattern>
     <url-pattern>/compras/view</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExcluirProdutoServlet</display-name>
+    <servlet-name>ExcluirProdutoServlet</servlet-name>
+    <servlet-class>controller.produto.ExcluirProdutoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcluirProdutoServlet</servlet-name>
+    <url-pattern>/produto/excluir</url-pattern>
+    <url-pattern>/produto/remover</url-pattern>
+    <url-pattern>/produto/apagar</url-pattern>
+  </servlet-mapping>
 </web-app>
