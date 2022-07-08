@@ -17,9 +17,12 @@ if(request.getAttribute("comprasRegistradas") != null)
 	<div class="row">
 		<div class="col-xl-12 d-flex flex-row">
 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/produto/cadastrar" role="button">
+<<<<<<< HEAD
 			Registrar novo produto
 			</a>
 			<a class="btn btn-primary" href="${pageContext.request.contextPath}/compra/registrar" role="button">
+=======
+>>>>>>> a944c0512718310266e59e6831ed26a1fcc80aca
 			Registrar nova compra
 			</a>
 		</div>

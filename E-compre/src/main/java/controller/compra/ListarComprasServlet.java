@@ -42,9 +42,15 @@ public class ListarComprasServlet extends HttpServlet {
 		
 		request.setAttribute("comprasRegistradas", compras);
 		request.setAttribute("tituloPagina", "Registro de compras");
+<<<<<<< HEAD
 		request.setAttribute("pathPagina", "/views/compra/listarCompras.jsp");
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
+=======
+		request.setAttribute("pathPagina", "../../../webapp/views/compras/listar.jsp");
+		
+		RequestDispatcher rd = request.getRequestDispatcher("../../../webapp/template.jsp");
+>>>>>>> a944c0512718310266e59e6831ed26a1fcc80aca
 		
 		rd.forward(request, response);
 	}

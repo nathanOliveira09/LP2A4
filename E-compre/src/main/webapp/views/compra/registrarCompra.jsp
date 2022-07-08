@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 
 <form method="POST"
 	  action="${pageContext.request.contextPath}/compra/registrar">
+=======
+<jsp:include page="../../template.jsp"/>
+
+<form method="POST"
+	  action="${pageContext.request.contextPath}/compra/cadastrar">
+>>>>>>> a944c0512718310266e59e6831ed26a1fcc80aca
 	
 	<p>
 		<label for="idProduto">Id produto:</label>

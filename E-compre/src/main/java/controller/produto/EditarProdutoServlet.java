@@ -50,8 +50,13 @@ public class EditarProdutoServlet extends HttpServlet {
 		p = produto.recuperarProdutoPorId(idProduto);
 		
 		request.setAttribute("tituloPagina", "Editar Produto");
+<<<<<<< HEAD
 		request.setAttribute("pathPagina", "/views/produto/editarProduto.jsp");
 		request.setAttribute("produto", p);
+=======
+		request.setAttribute("pathPagina", "/produto/editar.jsp");
+		request.setAttribute("produtos", p);
+>>>>>>> a944c0512718310266e59e6831ed26a1fcc80aca
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		rd.forward(request, response); 
