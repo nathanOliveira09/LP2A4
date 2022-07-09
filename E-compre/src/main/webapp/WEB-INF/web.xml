@@ -86,4 +86,16 @@
     <url-pattern>/produto/remover</url-pattern>
     <url-pattern>/produto/apagar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditarCompraServlet</display-name>
+    <servlet-name>EditarCompraServlet</servlet-name>
+    <servlet-class>controller.compra.EditarCompraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditarCompraServlet</servlet-name>
+    <url-pattern>/compra/editar</url-pattern>
+    <url-pattern>/compra/alterar</url-pattern>
+    <url-pattern>/compra/atualizar</url-pattern>
+  </servlet-mapping>
 </web-app>

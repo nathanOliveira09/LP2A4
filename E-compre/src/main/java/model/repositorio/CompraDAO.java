@@ -2,6 +2,7 @@ package model.repositorio;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -84,5 +85,106 @@ public class CompraDAO extends FabricaConexao{
 		
 	}
 	
+	public Compra recuperarCompraPorId(int id) {
+		Compra c = new Compra();
+		
+		try {
+			String stmt = "SELECT * FROM compras WHERE idcompra = ? INNER JOIN produtos ON produtos.id = compras.idproduto";
+			PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
+			
+			pStmt.setInt(1, id);
+			ResultSet rs = pStmt.executeQuery();
+			
+			while(rs.next()) {
+				Produto p1 = new ProdutoDAO().recuperarProdutoPorId(rs.getInt("idproduto"));
+				
+				c.setId(rs.getInt("idcompra"));
+				c.setNumeroNF(rs.getLong("numeronf"));
+				c.setProdutos(p1);
+				c.setQuantidade(rs.getInt("quantidade"));
+				
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao buscar compras" + e.getMessage());
+		}
+		
+		return c;
+
+		
+	}
+	
+	public int editarCompra (Compra compra) throws SQLException {
+		int resultado = 0;
+		ProdutoDAO p1 = new ProdutoDAO();
+		int quantidadeAtualProduto =p1.recuperarProdutoPorId(compra.getProdutos().getId()).getQtd();
+		
+		int quantidadeAtualizadaProduto= 0;
+		CompraDAO c1 = new CompraDAO();
+		int quantidadeAtualCompra= c1.recuperarCompraPorId(compra.getId()).getQuantidade();
+
+		if(compra.getQuantidade()>=quantidadeAtualCompra) {
+			quantidadeAtualizadaProduto = quantidadeAtualProduto + (compra.getQuantidade()-quantidadeAtualCompra);
+			try {
+				String stmt = "update compras set idproduto = ?, numeroNF = ?, quantidade = ? where id = ?";
+				PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
+				
+				pStmt.setInt(1, compra.getProdutos().getId());
+				pStmt.setDouble(2,compra.getNumeroNF());
+				pStmt.setInt(3, compra.getQuantidade());
+				pStmt.setInt(4, compra.getId());
+				resultado = pStmt.executeUpdate();
+				super.fecharConexao();
+			} catch (Exception e) {
+				System.out.println("Erro ao atualizar compras" + e.getMessage());
+			}
+			String stmt="update produtos set qtd = ? where id = ?";
+			PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
+			pStmt.setInt(1, quantidadeAtualizadaProduto);
+			pStmt.setInt(2, p1.recuperarProdutoPorId(compra.getProdutos().getId()).getId());
+			
+			resultado = pStmt.executeUpdate();
+			super.fecharConexao();		
+		}else {
+			quantidadeAtualizadaProduto = quantidadeAtualProduto - (quantidadeAtualCompra - compra.getQuantidade());
+			try {
+				String stmt = "update compras set idproduto = ?, numeroNF = ?, quantidade = ? where id = ?";
+				PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
+				
+				pStmt.setInt(1, compra.getProdutos().getId());
+				pStmt.setDouble(2,compra.getNumeroNF());
+				pStmt.setInt(3, compra.getQuantidade());
+				pStmt.setInt(4, compra.getId());
+				resultado = pStmt.executeUpdate();
+				super.fecharConexao();
+			} catch (Exception e) {
+				System.out.println("Erro ao atualizar compras" + e.getMessage());
+			}
+			String stmt="update produtos set qtd = ? where id = ?";
+			PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
+			pStmt.setInt(1, quantidadeAtualizadaProduto);
+			pStmt.setInt(2, p1.recuperarProdutoPorId(compra.getProdutos().getId()).getId());
+			
+			resultado = pStmt.executeUpdate();
+			super.fecharConexao();		
+		}
+		return resultado;
+	}
+	
+	public int excluirCompra(int id) {
+		int resultado = 0;
+		
+		try {
+			String stmt = "delete from compras where id = ?";
+			PreparedStatement pStmt = super.abrirConexao().prepareStatement(stmt);
+			pStmt.setInt(1, id);
+			
+			resultado = pStmt.executeUpdate();
+			super.fecharConexao();
+		} catch (Exception e) {
+			System.out.println("Erro ao remover a compra com o ID: " + id + ". " + e.getMessage());
+		}
+		
+		return resultado;
+	}
 	
 }
