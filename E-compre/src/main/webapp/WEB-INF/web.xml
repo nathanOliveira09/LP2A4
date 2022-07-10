@@ -98,4 +98,15 @@
     <url-pattern>/compra/alterar</url-pattern>
     <url-pattern>/compra/atualizar</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExcluirCompraServlet</display-name>
+    <servlet-name>ExcluirCompraServlet</servlet-name>
+    <servlet-class>controller.compra.ExcluirPessoaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcluirCompraServlet</servlet-name>
+    <url-pattern>/compra/excluir</url-pattern>
+    <url-pattern>/compra/apagar</url-pattern>
+  </servlet-mapping>
 </web-app>

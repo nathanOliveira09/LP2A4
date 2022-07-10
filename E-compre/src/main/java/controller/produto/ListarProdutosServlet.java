@@ -35,7 +35,6 @@ public class ListarProdutosServlet extends HttpServlet {
 		request.setAttribute("produtosCadastrados", produtos);
 		request.setAttribute("tituloPagina", "Cadastro de produtos");
 		request.setAttribute("pathPagina", "/views/produto/listarProduto.jsp");
-		request.setAttribute("produtosCadastrados", produtos);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/template.jsp");
 		

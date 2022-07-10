@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <form method="POST"
-	  action="${pageContext.request.contextPath}/compra/cadastrar">
+	  action="${pageContext.request.contextPath}/compra/registrar">
 	
 	<p>
 		<label for="idProduto">Id produto:</label>
